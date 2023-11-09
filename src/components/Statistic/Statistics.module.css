@@ -1,0 +1,23 @@
+.statisticsCont{
+width: 100%;
+    
+   padding-top: 10px;
+   padding-bottom: 20px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+
+
+.title {
+   text-align: center; 
+   
+  }
+  .list{
+    list-style: none;
+
+  }
+  .item{
+    padding-top: 5px;
+   text-align: center;
+  }
