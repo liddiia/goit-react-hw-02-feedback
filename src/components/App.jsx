@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { FeedbackOptions } from './Feedback/Feedback';
-import { StatisticsList } from './Statistic/Statistics';
+import { Section } from './Section/Section';
 
 export class App extends Component {
   state = {
@@ -24,52 +23,13 @@ export class App extends Component {
     return percent.toFixed();
   };
 
-  render() {
-    const { good, neutral, bad } = this.state;
-    const totalFeedback = this.countTotalFeedback();
-    const positivePercentage = this.countPositiveFeedbackPercentage();
-    return (
-      <>
-        <dir
-          style={{
-            width: '60%' ,
-            marginRight: 'auto' ,
-            marginLeft: 'auto',
-            padding: '12px 16px',
-            borderRadius: 5,
-            backgroundColor: 'gray',
-            color: 'white',
-          }}
-        >
-          <h1 style={{
-            textAlign: 'center',
-          }
-
-          }>Please leave feedback</h1>
-
-          <FeedbackOptions
-            options={Object.keys(this.state)}
-            onLeaveFeedback={this.onLeaveFeedback}
-          />
-        </dir>
-        <dir>
-          {totalFeedback > 0 ? (
-            <StatisticsList
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={totalFeedback}
-              positivePercentage={positivePercentage}
-            />
-          ) : (
-            <h2 style={{
-              textAlign: 'center',
-            }
-  
-            }>There is no feedback</h2>
-          )}
-        </dir>
-      </>
-    );
-  }
+render() {
+      return <div>
+      <Section
+      state={this.state}
+      onLeaveFeedback={this.onLeaveFeedback}
+      countTotalFeedback={this.countTotalFeedback()}
+      countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}/>
+    </div>;
+    }
 }
